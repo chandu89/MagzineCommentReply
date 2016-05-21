@@ -1,0 +1,20 @@
+<style type="text/css">
+  .cmt{
+    border: 1px solid seashell;
+    background: gainsboro;
+    display: table;
+  }
+</style>
+  <div class="field cmt">
+    <%= comment.name %> is commented <%= comment.comment %>
+    <%= link_to 'Reply', new_article_comment_reply_path(@article, comment) %>
+    <% if !comment.replies.empty?%>
+      <% comment.replies.each  do |reply|%>
+        <%= render :partial => "replies/show_replies", :locals => {:reply => reply} %>
+      <%end%>
+    <% end %>
+
+  </div>
+  <!-- <div class="field">
+    Comment: <%#= comment.comment %>
+  </div> -->
